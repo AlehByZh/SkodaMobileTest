@@ -18,6 +18,13 @@ public class ServiceScreen {
     @FindBy(id = "ru.skoda.service:id/cardViewFourBodyRepair")
     private WebElement bodyRepairCard;
 
+    //Кнопка Руководство по эксплуатации
+    @AndroidFindBy(uiAutomator = "new UiScrollable(new UiSelector().className(\"android.widget.ScrollView\")).scrollIntoView(new UiSelector().resourceId(\"ru.skoda.service:id/layoutCarManuals\"))")
+    private WebElement manualsButton;
+    //Кнопка Гарантия на авто
+    @AndroidFindBy(uiAutomator = "new UiScrollable(new UiSelector().className(\"android.widget.ScrollView\")).scrollIntoView(new UiSelector().resourceId(\"ru.skoda.service:id/layoutWarranty\"))")
+    private WebElement warrantyButton;
+
     public ServiceScreen clickServiceCalculatorCard() {
         serviceCalculatorCard.click();
         return this;
@@ -31,6 +38,12 @@ public class ServiceScreen {
     @Step("Проверка видимости карточки Калькулятор ТО")
     public void checkCalculatorIsVisible() {
         assert(serviceCalculatorCard.isDisplayed());
+    }
+
+    public ServiceScreen clickWarrantyButton() {
+        new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(warrantyButton)));
+        warrantyButton.click();
+        return this;
     }
 
     public ServiceScreen(AppiumDriver driver) {
