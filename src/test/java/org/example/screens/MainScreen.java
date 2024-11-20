@@ -12,30 +12,31 @@ import java.time.Duration;
 public class MainScreen {
     private final AppiumDriver driver;
 
+    //Кнопка Домой
     @FindBy(id = "ru.skoda.service:id/bottom_home")
     private WebElement mainHomeButton;
-
+    //Кнопка Сервис
     @FindBy(id = "ru.skoda.service:id/bottom_service")
     private WebElement serviceButton;
-
+    //Кнопка Профиль
     @FindBy(id = "ru.skoda.service:id/bottom_profile")
     private WebElement profileButton;
-
+    //Кнопка O SKODA
     @FindBy(id = "ru.skoda.service:id/bottom_systemInfo")
     private WebElement aboutButton;
-
+    //Кнопка Бокового меню
     @FindBy(className = "android.widget.ImageButton")
     private WebElement sideMenuButton;
-
+    //Карточка Записаться на сервис
     @FindBy(id = "ru.skoda.service:id/cardViewOneEntryToTheService")
     private WebElement entryServiceCard;
-
+    //Карточка Помощь в дороге
     @FindBy(id = "ru.skoda.service:id/cardViewTwoHelpOnTheRoad")
     private WebElement helpRoadCard;
-
+    //Карточка Заполнить профиль
     @FindBy(id = "ru.skoda.service:id/cardViewFourDynamic")
     private WebElement profileCard;
-
+    //Карточка Список дилеров
     @FindBy(id = "ru.skoda.service:id/cardViewThreeListOfDealers")
     private WebElement dealersCard;
 
@@ -90,5 +91,10 @@ public class MainScreen {
     public MainScreen clickDealersCard() {
         dealersCard.click();
         return this;
+    }
+
+    @Step("Проверка отображения карточки Записаться на сервис")
+    public void checkIsEntryServiceVisible() {
+        assert entryServiceCard.isDisplayed();
     }
 }

@@ -27,6 +27,14 @@ public class MainTests {
         service.checkCalculatorIsVisible();
     }
 
+    @Test
+    @DisplayName("Проверка работоспособности кнопки \"Главная\"")
+    public void mainHomeButtonTest() {
+        main.clickServiceButton();
+        main.clickMainButton();
+        main.checkIsEntryServiceVisible();
+    }
+
     @AfterEach
     public void tearDown() {
         driver.quit();
