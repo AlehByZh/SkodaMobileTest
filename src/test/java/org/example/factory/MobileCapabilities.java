@@ -8,7 +8,7 @@ import io.appium.java_client.remote.options.BaseOptions;
 
 public class MobileCapabilities {
 
-    public static BaseOptions<UiAutomator2Options> getAndroidCapabilities() {
+    public static UiAutomator2Options getAndroidCapabilities() {
         var cap = new UiAutomator2Options();
         cap.setPlatformName(MobilePlatform.ANDROID);
         cap.setDeviceName("sdk_gphone_x86_64");
@@ -17,7 +17,7 @@ public class MobileCapabilities {
         return cap;
     }
 
-    public static BaseOptions<XCUITestOptions> getIosCapabilities() {
+    public static XCUITestOptions getIosCapabilities() {
         var cap = new XCUITestOptions();
         cap.setPlatformName(MobilePlatform.IOS);
         cap.setDeviceName("iPhone_11");
