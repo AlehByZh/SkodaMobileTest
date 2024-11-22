@@ -10,7 +10,13 @@ import org.openqa.selenium.support.PageFactory;
 import java.time.Duration;
 
 public class MainScreen {
+
     private final AppiumDriver driver;
+
+    public MainScreen(AppiumDriver driver) {
+        PageFactory.initElements(new AppiumFieldDecorator(driver, Duration.ofSeconds(10)), this);
+        this.driver = driver;
+    }
 
     //Кнопка Домой
     @FindBy(id = "ru.skoda.service:id/bottom_home")
@@ -39,11 +45,6 @@ public class MainScreen {
     //Карточка Список дилеров
     @FindBy(id = "ru.skoda.service:id/cardViewThreeListOfDealers")
     private WebElement dealersCard;
-
-    public MainScreen(AppiumDriver driver) {
-        PageFactory.initElements(new AppiumFieldDecorator(driver, Duration.ofSeconds(10)), this);
-        this.driver = driver;
-    }
 
     @Step("Тап на кнопку Сервис")
     public MainScreen clickServiceButton() {

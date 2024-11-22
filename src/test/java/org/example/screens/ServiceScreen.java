@@ -13,7 +13,13 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 public class ServiceScreen {
+
     private final AppiumDriver driver;
+
+    public ServiceScreen(AppiumDriver driver) {
+        PageFactory.initElements(new AppiumFieldDecorator(driver, Duration.ofSeconds(10)), this);
+        this.driver = driver;
+    }
 
     //Карточка Калькулятор ТО
     @FindBy(id = "ru.skoda.service:id/cardViewTwoCalculatorTS")
@@ -50,10 +56,5 @@ public class ServiceScreen {
         new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(warrantyButton)));
         warrantyButton.click();
         return this;
-    }
-
-    public ServiceScreen(AppiumDriver driver) {
-        PageFactory.initElements(new AppiumFieldDecorator(driver, Duration.ofSeconds(10)), this);
-        this.driver = driver;
     }
 }

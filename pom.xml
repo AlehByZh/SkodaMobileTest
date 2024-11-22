@@ -16,7 +16,6 @@
         <aspectj.version>1.9.22</aspectj.version>
         <appium.java.version>9.3.0</appium.java.version>
         <junit5.version>5.11.3</junit5.version>
-        <selenium.java.version>4.26.0</selenium.java.version>
         <maven.surefire.plugin.version>3.5.2</maven.surefire.plugin.version>
         <allure.maven.version>2.15.2</allure.maven.version>
     </properties>
@@ -48,11 +47,6 @@
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-junit5</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-java</artifactId>
-            <version>${selenium.java.version}</version>
-        </dependency>
     </dependencies>
 
     <build>
@@ -66,16 +60,11 @@
                     <argLine>
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
                     </argLine>
-                    <systemProperties>
-                        <property>
-                            <name>allure.results.directory</name>
-                            <value>${project.build.directory}/allure-results</value>
-                        </property>
-                        <property>
-                            <name>junit.jupiter.extensions.autodetection.enabled</name>
-                            <value>true</value>
-                        </property>
-                    </systemProperties>
+                    <properties>
+                        <configurationParameters>
+                            junit.jupiter.extensions.autodetection.enabled = true
+                        </configurationParameters>
+                    </properties>
                 </configuration>
                 <dependencies>
                     <dependency>
@@ -91,6 +80,7 @@
                 <version>${allure.maven.version}</version>
                 <configuration>
                     <reportVersion>${allure.version}</reportVersion>
+                    <resultsDirectory>${project.build.directory}/allure-results</resultsDirectory>
                 </configuration>
             </plugin>
             <plugin>

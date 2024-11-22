@@ -11,13 +11,11 @@ import java.net.URL;
 public class MobileFactory {
 
     public static AppiumDriver getDriver(String browser) {
-        switch (browser) {
-            case "ANDROID":
-            default:
-                return getAndroidDriver();
-            case "IOS":
-                return getIosDriver();
-        }
+        return switch (browser) {
+            case "ANDROID" -> getAndroidDriver();
+            case "IOS" -> getIosDriver();
+            default -> throw new IllegalStateException("Unexpected platform: " + browser);
+        };
     }
 
     @Step("Инициализация драйвера для платформы Android")
