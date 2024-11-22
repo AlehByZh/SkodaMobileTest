@@ -40,10 +40,18 @@ public class MainTests {
 
     @Test
     @DisplayName("Проверка нажатия карточки \"Юридические условия\" на странице \"O SKODA\"")
-    public void checkLawInfoCard() {
+    public void checkLawInfoCardTest() {
         main.clickAboutButton();
         about.clickLawInfoCard();
         about.checkIsLawInfoVisible();
+    }
+
+    @Test
+    @DisplayName("Проверка нажатия карточки \"ŠKODA FAMILY\" на странице \"О ŠKODA\"")
+    public void checkSkodaFamilyCardTest() {
+        main.clickAboutButton();
+        about.clickSkodaFamilyCard();
+        about.checkIsSkodaFamilyScreenVisible();
     }
 
     @AfterEach
