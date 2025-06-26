@@ -21,7 +21,7 @@ public class MobileFactory {
     @Step("Инициализация драйвера для платформы Android")
     public static AndroidDriver getAndroidDriver() {
         try {
-            var url = new URL("http://127.0.0.1:4723/wd/hub");
+            var url = new URL("http://127.0.0.1:4723/");
             return new AndroidDriver(url, MobileCapabilities.getAndroidCapabilities());
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
@@ -31,7 +31,7 @@ public class MobileFactory {
     @Step("Инициализация драйвера для платформы iOS")
     public static IOSDriver getIosDriver() {
         try {
-            var url = new URL("http://127.0.0.1:4723/wd/hub");
+            var url = new URL("http://127.0.0.1:4723/");
             return new IOSDriver(url, MobileCapabilities.getIosCapabilities());
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
